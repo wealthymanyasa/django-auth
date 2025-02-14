@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from dj_rest_auth.views import PasswordResetConfirmView, PasswordResetView
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
@@ -40,6 +40,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include("dj_rest_auth.urls")),
     path('auth/registration/', include("dj_rest_auth.registration.urls")),
+    path('auth/password/reset/', PasswordResetView.as_view, name="password_reset"),
+    path('auth/password/reset/confirm/<str:uidb64>/<str:token>', 
+         PasswordResetConfirmView.as_view, name="password_reset_confirm"),
     
     path(
         "swagger<format>/", schema_view.without_ui(cache_timeout=0), name="schema-json"

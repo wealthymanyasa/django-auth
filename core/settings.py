@@ -152,8 +152,17 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend"
 ]
+  # email configuration
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" console email
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_POER = "587"
+EMAIL_HOST_USER = "obiemanyasa@gmail.com"
+EMAIL_HOST_PASSWORD = "syjhcwtbhelzbyzk"
+DEFAULT_FROM_EMAIL = "obiemanyasa@gmail.com"
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
